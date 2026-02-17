@@ -33,18 +33,38 @@
 
     </table>
     <button id="btn">next</button>
+    <button id="fin">find</button>
     <script src="assignment12.js">
     </script>    
     <script>
     
 
 j=0
+document.getElementById("fin").addEventListener("click",function()
+{
+    var value=prompt("enter the name of book")
+    console.log(value)
+   for(var p=0;p<=books.length-1;p++)
+{
+    if(value==books[p].title)
+{
+    document.getElementById("table_books").innerHTML=""
+    j=p
+    k=j
+    books10(j,k)
+}
+
+}
+})
 document.getElementById("btn").addEventListener("click",function()
 {
-    console.log(j)
     document.getElementById("table_books").innerHTML=""
-    books10()
-    return j+=10
+    var h=j
+    var k=j+10
+    j=j+10
+    console.log(j)
+    console.log(k)
+    books10(h,k)
 
 })   
 
@@ -52,8 +72,9 @@ if(j>=books.length)
 {
   document.getElementById("btn").removeEventListener()
 }
-function books10(){
-for(var i=j;i<=j+10;i++)
+function books10(j,k){
+    console.log(k)
+for(var i=j;i<=k;i++)
 {
   var table_row=document.createElement("tr")
   
@@ -117,7 +138,6 @@ for(var i=j;i<=j+10;i++)
   discountUnits1.innerText=books[i].discountUnits
   table_row.appendChild(discountUnits1)
   document.getElementById("table_books").appendChild(table_row)
-  
  }
 }
 
